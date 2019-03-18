@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geta.Omnium", "src\Geta.Omnium\Geta.Omnium.csproj", "{4B603079-1CEE-4167-8EE7-4FA483A96646}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{64061226-F405-403D-8016-8F3C47C938B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geta.Omnium.Test", "test\Geta.Omnium.Test\Geta.Omnium.Test.csproj", "{BC0FDE50-AF0A-49CB-99BF-2E8C8221F150}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B603079-1CEE-4167-8EE7-4FA483A96646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B603079-1CEE-4167-8EE7-4FA483A96646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B603079-1CEE-4167-8EE7-4FA483A96646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B603079-1CEE-4167-8EE7-4FA483A96646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0FDE50-AF0A-49CB-99BF-2E8C8221F150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0FDE50-AF0A-49CB-99BF-2E8C8221F150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0FDE50-AF0A-49CB-99BF-2E8C8221F150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0FDE50-AF0A-49CB-99BF-2E8C8221F150}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC0FDE50-AF0A-49CB-99BF-2E8C8221F150} = {64061226-F405-403D-8016-8F3C47C938B7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3BAAED1-1799-4433-9ECC-9025EF54EFBE}
+	EndGlobalSection
+EndGlobal

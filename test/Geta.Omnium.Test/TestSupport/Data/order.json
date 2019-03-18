@@ -1,0 +1,440 @@
+﻿{
+  "customerId": "86328afe-bbdb-4577-af8c-deefaa1c4254",
+  "billingCurrency": "USD",
+  "customerName": "Cruz Graham",
+  "customerPhone": "",
+  "customerEmail": "",
+  "marketId": "NOR",
+  "orderNumber": "PO0490",
+  "billingAddress": {
+    "name": "Cruz Graham",
+    "firstName": "Cruz",
+    "lastName": "Graham",
+    "organization": "",
+    "line1": "Kungsgatan 446",
+    "line2": "",
+    "city": "G\u00e4vle",
+    "state": null,
+    "countryCode": "SE",
+    "countryName": "Sweden",
+    "postalCode": "",
+    "regionCode": "",
+    "regionName": "",
+    "daytimePhoneNumber": "",
+    "eveningPhoneNumber": "",
+    "email": ""
+  },
+  "orderForm": {
+    "shipments": [
+      {
+        "discounts": [
+          {
+            "discountId": null,
+            "discountAmount": 10,
+            "discountCode": null,
+            "discountName": "$10 off shipping from Women's Shoes",
+            "displayMessage": null,
+            "discountValue": 10,
+            "rewardType": "Money",
+            "discountType": "Shipping"
+          }
+        ],
+        "shipmentId": "999",
+        "shippingMethodId": "0b4a4792-10d8-497f-8dc1-379be7f85531",
+        "shippingMethodName": "Express-USD",
+        "shippingTax": 0,
+        "shipmentTrackingNumber": "",
+        "shipmentTrackingLink": null,
+        "shippingDiscountAmount": 10,
+        "shippingSubTotal": 20,
+        "shippingSubTotalExclTax": 0,
+        "status": null,
+        "prevStatus": null,
+        "subTotal": 33.5,
+        "total": 53.5,
+        "taxTotal": 0,
+        "warehouseCode": "stockholmstore",
+        "pickUpWarehouseCode": null,
+        "lineItems": [
+          {
+            "lineItemId": "2209",
+            "code": "SKU-36921957",
+            "displayName": "Brinley Co. Womens Closed Toe Platform Mesh Pumps",
+            "placedPrice": 18.5,
+            "placedPriceExclTax": 18.5,
+            "extendedPrice": 18.5,
+            "extendedPriceExclTax": 18.5,
+            "discountedPrice": 0,
+            "discountedPriceExclTax": 0,
+            "orderDiscountAmount": 0,
+            "comment": null,
+            "quantity": 1,
+            "unit": null,
+            "returnQuantity": 0,
+            "returnReason": null,
+            "canceledQuantity": 0,
+            "deliveredQuantity": 0,
+            "isGift": false,
+            "cost": 0,
+            "costTotal": 0,
+            "discounted": 0,
+            "discountedExclTax": 0,
+            "taxTotal": 0,
+            "taxRate": 0,
+            "campaignId": null,
+            "properties": [
+              {
+                "key": "Epi_IsGift",
+                "value": "False"
+              }
+            ],
+            "size": "",
+            "color": "",
+            "supplierSkuId": null,
+            "supplierName": null,
+            "productId": "P-36921911"
+          },
+          {
+            "lineItemId": "2210",
+            "code": "SKU-41136681",
+            "displayName": "Chevron Stripe Essential Tank Maxi Dress",
+            "placedPrice": 10,
+            "placedPriceExclTax": 10,
+            "extendedPrice": 10,
+            "extendedPriceExclTax": 10,
+            "discountedPrice": 0,
+            "discountedPriceExclTax": 0,
+            "orderDiscountAmount": 0,
+            "comment": null,
+            "quantity": 1,
+            "unit": null,
+            "returnQuantity": 0,
+            "returnReason": null,
+            "canceledQuantity": 0,
+            "deliveredQuantity": 0,
+            "isGift": false,
+            "cost": 0,
+            "costTotal": 0,
+            "discounted": 0,
+            "discountedExclTax": 0,
+            "taxTotal": 0,
+            "taxRate": 0,
+            "campaignId": null,
+            "properties": [
+              {
+                "key": "Epi_IsGift",
+                "value": "False"
+              }
+            ],
+            "size": "",
+            "color": "",
+            "supplierSkuId": null,
+            "supplierName": null,
+            "productId": "P-41136685"
+          },
+          {
+            "lineItemId": "2211",
+            "code": "SKU-37001258",
+            "displayName": "French Terry Stripe Tunic",
+            "placedPrice": 5,
+            "placedPriceExclTax": 5,
+            "extendedPrice": 5,
+            "extendedPriceExclTax": 5,
+            "discountedPrice": 0,
+            "discountedPriceExclTax": 0,
+            "orderDiscountAmount": 0,
+            "comment": null,
+            "quantity": 1,
+            "unit": null,
+            "returnQuantity": 0,
+            "returnReason": null,
+            "canceledQuantity": 0,
+            "deliveredQuantity": 0,
+            "isGift": false,
+            "cost": 0,
+            "costTotal": 0,
+            "discounted": 0,
+            "discountedExclTax": 0,
+            "taxTotal": 0,
+            "taxRate": 0,
+            "campaignId": null,
+            "properties": [
+              {
+                "key": "Epi_IsGift",
+                "value": "False"
+              }
+            ],
+            "size": "",
+            "color": "",
+            "supplierSkuId": null,
+            "supplierName": null,
+            "productId": "P-37001733"
+          }
+        ],
+        "properties": [
+          {
+            "key": "PrevStatus",
+            "value": null
+          }
+        ],
+        "address": {
+          "name": "Cruz Graham",
+          "firstName": "Cruz",
+          "lastName": "Graham",
+          "organization": "",
+          "line1": "Kungsgatan 446",
+          "line2": "",
+          "city": "G\u00e4vle",
+          "state": null,
+          "countryCode": "SE",
+          "countryName": "Sweden",
+          "postalCode": "",
+          "regionCode": "",
+          "regionName": "",
+          "daytimePhoneNumber": "",
+          "eveningPhoneNumber": "",
+          "email": ""
+        },
+        "transit": false,
+        "comment": null,
+        "returnTrackingNumber": null,
+        "returnTrackingLink": null,
+        "returnLabelLink": null
+      }
+    ],
+    "lineItems": [
+      {
+        "lineItemId": "2209",
+        "code": "SKU-36921957",
+        "displayName": "Brinley Co. Womens Closed Toe Platform Mesh Pumps",
+        "placedPrice": 18.5,
+        "placedPriceExclTax": 18.5,
+        "extendedPrice": 18.5,
+        "extendedPriceExclTax": 18.5,
+        "discountedPrice": 0,
+        "discountedPriceExclTax": 0,
+        "orderDiscountAmount": 0,
+        "comment": null,
+        "quantity": 1,
+        "unit": null,
+        "returnQuantity": 0,
+        "returnReason": null,
+        "canceledQuantity": 0,
+        "deliveredQuantity": 0,
+        "isGift": false,
+        "cost": 0,
+        "costTotal": 0,
+        "discounted": 0,
+        "discountedExclTax": 0,
+        "taxTotal": 0,
+        "taxRate": 0,
+        "campaignId": null,
+        "properties": [
+          {
+            "key": "Epi_IsGift",
+            "value": "False"
+          }
+        ],
+        "size": "",
+        "color": "",
+        "supplierSkuId": null,
+        "supplierName": null,
+        "productId": "P-36921911"
+      },
+      {
+        "lineItemId": "2210",
+        "code": "SKU-41136681",
+        "displayName": "Chevron Stripe Essential Tank Maxi Dress",
+        "placedPrice": 10,
+        "placedPriceExclTax": 10,
+        "extendedPrice": 10,
+        "extendedPriceExclTax": 10,
+        "discountedPrice": 0,
+        "discountedPriceExclTax": 0,
+        "orderDiscountAmount": 0,
+        "comment": null,
+        "quantity": 1,
+        "unit": null,
+        "returnQuantity": 0,
+        "returnReason": null,
+        "canceledQuantity": 0,
+        "deliveredQuantity": 0,
+        "isGift": false,
+        "cost": 0,
+        "costTotal": 0,
+        "discounted": 0,
+        "discountedExclTax": 0,
+        "taxTotal": 0,
+        "taxRate": 0,
+        "campaignId": null,
+        "properties": [
+          {
+            "key": "Epi_IsGift",
+            "value": "False"
+          }
+        ],
+        "size": "",
+        "color": "",
+        "supplierSkuId": null,
+        "supplierName": null,
+        "productId": "P-41136685"
+      },
+      {
+        "lineItemId": "2211",
+        "code": "SKU-37001258",
+        "displayName": "French Terry Stripe Tunic",
+        "placedPrice": 5,
+        "placedPriceExclTax": 5,
+        "extendedPrice": 5,
+        "extendedPriceExclTax": 5,
+        "discountedPrice": 0,
+        "discountedPriceExclTax": 0,
+        "orderDiscountAmount": 0,
+        "comment": null,
+        "quantity": 1,
+        "unit": null,
+        "returnQuantity": 0,
+        "returnReason": null,
+        "canceledQuantity": 0,
+        "deliveredQuantity": 0,
+        "isGift": false,
+        "cost": 0,
+        "costTotal": 0,
+        "discounted": 0,
+        "discountedExclTax": 0,
+        "taxTotal": 0,
+        "taxRate": 0,
+        "campaignId": null,
+        "properties": [
+          {
+            "key": "Epi_IsGift",
+            "value": "False"
+          }
+        ],
+        "size": "",
+        "color": "",
+        "supplierSkuId": null,
+        "supplierName": null,
+        "productId": "P-37001733"
+      }
+    ],
+    "discounts": [
+
+    ],
+    "payments": [
+      {
+        "amount": 43.5,
+        "authorizationCode": "",
+        "customerName": "Cruz Graham",
+        "implementationClass": null,
+        "paymentId": 999,
+        "paymentMethodId": "ef6a5e4a-de87-4749-bd26-38c41badee6a",
+        "paymentMethodName": "GenericCreditCard",
+        "paymentType": "CreditCard",
+        "status": "Processed",
+        "transactionID": "",
+        "transactionType": "Authorization",
+        "validationCode": "",
+        "properties": [
+          {
+            "key": "CreditCardNumber",
+            "value": "4662519843660534"
+          },
+          {
+            "key": "ProviderProfileId",
+            "value": null
+          },
+          {
+            "key": "ExpirationMonth",
+            "value": "1"
+          },
+          {
+            "key": "CreditCardSecurityCode",
+            "value": "212"
+          },
+          {
+            "key": "ExpirationYear",
+            "value": "0"
+          },
+          {
+            "key": "ProviderPaymentId",
+            "value": null
+          },
+          {
+            "key": "CardType",
+            "value": "Credit card"
+          }
+        ]
+      }
+    ],
+    "shippingSubTotal": 10,
+    "shippingSubTotalExclTax": 0,
+    "handlingTotal": 0,
+    "taxTotal": 0,
+    "discountAmount": 10,
+    "subTotal": 33.5,
+    "subTotalExclTax": 33.5,
+    "total": 43.5,
+    "totalExclTax": 43.5,
+    "authorizedPaymentTotal": 43.5,
+    "capturedPaymentTotal": 0,
+    "properties": [
+      {
+        "key": "Epi_CouponCodes",
+        "value": null
+      },
+      {
+        "key": "RMANumber",
+        "value": null
+      }
+    ]
+  },
+  "publicOrderNotes": null,
+  "shippingDiscountTotal": 0,
+  "shippingSubTotal": 20,
+  "status": "New",
+  "subTotal": 33.5,
+  "subTotalExclTax": 33.5,
+  "taxTotal": 0,
+  "total": 53.5,
+  "totalExclTax": 53.5,
+  "discountTotalIncVat": 0,
+  "remainingPayment": 0,
+  "salesPersonId": null,
+  "salesChannel": null,
+  "modified": "2019-01-09T13:17:55.617Z",
+  "created": "2019-01-09T13:17:55.613Z",
+  "received": null,
+  "requestedDeliveryDate": null,
+  "properties": [
+    {
+      "key": "ParentOrderGroupId",
+      "value": "0"
+    },
+    {
+      "key": "MetaFieldOmniumSynchronizedDate",
+      "value": null
+    },
+    {
+      "key": "ExpirationDate",
+      "value": null
+    },
+    {
+      "key": "MetaFieldOmniumSynchronized",
+      "value": null
+    },
+    {
+      "key": "TrackingNumber",
+      "value": "PO0490"
+    }
+  ],
+  "paymentType": null,
+  "orderType": "Online",
+  "storeId": "123",
+  "returnOrderForms": null,
+  "orderOrigin": null,
+  "companyId": null,
+  "lineItemsCost": 0,
+  "customerReference": "",
+  "customerComment": ""
+}
