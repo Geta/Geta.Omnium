@@ -10,7 +10,7 @@ using Geta.Omnium.Extensions;
 using Geta.Omnium.Models;
 using Mediachase.Commerce.Orders;
 using Mediachase.Commerce.Orders.Search;
-using Omnium.Orders;
+using Omnium.Orders.Interfaces;
 
 namespace Geta.Omnium.Jobs
 {

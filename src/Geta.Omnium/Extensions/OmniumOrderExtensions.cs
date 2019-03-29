@@ -2,7 +2,7 @@
 using System.Net;
 using EPiServer.Commerce.Order;
 using Omnium.Models;
-using Omnium.Orders;
+using Omnium.Orders.Interfaces;
 using Omnium.Public.Orders.Models;
 
 namespace Geta.Omnium.Extensions
