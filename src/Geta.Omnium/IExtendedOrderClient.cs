@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Omnium.Models;
-using Omnium.Orders;
+using Omnium.Orders.Interfaces;
 using Omnium.Public.Orders.Models;
 
 namespace Geta.Omnium
