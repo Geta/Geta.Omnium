@@ -1,7 +1,7 @@
-# Omnium
+# Omnium OMS
 
 ## Description
-Integration package for Omnium.
+Integration package for [Omnium OMS](https://www.omnium.no/?lang=en) and [Episerver Commerce](https://world.episerver.com).
 
 ## Features
 * Scheduled job for syncing orders to Omnium
@@ -9,7 +9,17 @@ Integration package for Omnium.
 
 ## How to get started?
 * ``install-package Geta.Omnium``
-* Implement ``IOmniumImportSettings``
+
+### Configuration
+```
+<appSettings>
+    <add key="omnium:endpointUrl" value="ChangeThis" />
+    <add key="omnium:username" value="ChangeThis" />
+    <add key="omnium:token" value="ChangeThis" />
+</appSettings>
+```
+
+### Implement IOmniumImportSettings
 
 Create class that implements the ``IOmniumImportSettings`` interface.
 ```
