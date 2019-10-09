@@ -95,7 +95,7 @@ And register the implementation.
 Same can be done for the ``DefaultEpiOrderFactory`` for customizing the default functionality of mapping an OmniumOrder to a IPurchaseOrder.
 	
 ## Package maintainer
-https://github.com/patkleef
+https://github.com/marijorg
 
 ## Changelog
 [Changelog](CHANGELOG.md)
