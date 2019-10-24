@@ -4,6 +4,7 @@ using System.Linq;
 using EPiServer;
 using EPiServer.Commerce.Catalog.ContentTypes;
 using EPiServer.Commerce.Marketing;
+using EPiServer.Commerce.Marketing.Promotions;
 using EPiServer.Commerce.Order;
 using EPiServer.Commerce.Order.Internal;
 using EPiServer.Core;
@@ -14,7 +15,6 @@ using Geta.Omnium.Models;
 using Geta.Omnium.Taxes;
 using Mediachase.Commerce;
 using Mediachase.Commerce.Catalog;
-using Mediachase.Commerce.Customers;
 using Mediachase.Commerce.Markets;
 using Mediachase.Commerce.Orders;
 using Omnium.EPiServer.Commerce.Mappings;
@@ -42,10 +42,11 @@ namespace Geta.Omnium.Factories
         private readonly IContentRepository _contentRepository;
         private readonly IPaymentManagerFacade _paymentManagerFacade;
         private readonly ILineItemCalculator _lineItemCalculator;
-        private readonly IOrderFormCalculator _orderFormCalculator;
         private readonly IOrderGroupCalculator _orderGroupCalculator;
         private readonly IShipmentManagerFacade _shipmentManagerFacade;
         private readonly IPromotionEngine _promotionEngine;
+        private readonly IContentLoader _contentLoader;
+
 
         public DefaultOmniumOrderFactory(
             IShippingCalculator shippingCalculator,
@@ -56,10 +57,10 @@ namespace Geta.Omnium.Factories
             IContentRepository contentRepository,
             IPaymentManagerFacade paymentManagerFacade,
             ILineItemCalculator lineItemCalculator,
-            IOrderFormCalculator orderFormCalculator,
             IOrderGroupCalculator orderGroupCalculator,
             IShipmentManagerFacade shipmentManagerFacade,
-            IPromotionEngine promotionEngine)
+            IPromotionEngine promotionEngine, 
+            IContentLoader contentLoader)
         {
             _shippingCalculator = shippingCalculator;
             _marketService = marketService;
@@ -69,10 +70,10 @@ namespace Geta.Omnium.Factories
             _contentRepository = contentRepository;
             _paymentManagerFacade = paymentManagerFacade;
             _lineItemCalculator = lineItemCalculator;
-            _orderFormCalculator = orderFormCalculator;
             _orderGroupCalculator = orderGroupCalculator;
             _shipmentManagerFacade = shipmentManagerFacade;
             _promotionEngine = promotionEngine;
+            _contentLoader = contentLoader;
         }
 
         public virtual OmniumOrder MapOrder(IPurchaseOrder purchaseOrder)
@@ -135,13 +136,12 @@ namespace Geta.Omnium.Factories
         {
             var market = _marketService.GetMarket(orderGroup.MarketId);
             var currency = orderGroup.Currency;
-            var shipment = shipments.First();
-
+            
             var appliedDiscounts = orderGroup.ApplyDiscounts(_promotionEngine, new PromotionEngineSettings())?.ToList();
             var shippingDiscounts = appliedDiscounts?.Where(x => x.IsOfType(DiscountType.Shipping));
             var discounts = appliedDiscounts?.Where(x => !x.IsOfType(DiscountType.Shipping));
 
-            var omniumDiscounts = MapDiscounts(discounts, orderGroup.Currency, market, shipment.ShippingAddress);
+            var omniumDiscounts = MapDiscounts(discounts);
             var omniumShipments = shipments
                 .Select(x => MapShipment(x, market, currency, shippingDiscounts))
                 .ToList();
@@ -159,7 +159,7 @@ namespace Geta.Omnium.Factories
                 SubTotal = totals.SubTotal,
                 SubTotalExclTax = totals.SubTotalExclTax,
                 ShippingSubTotal = totals.Shipping,
-                DiscountAmount = totals.OrderDiscounts + totals.ShippingDiscounts,
+                DiscountAmount = totals.OrderDiscounts,
                 Total = totals.Total,
                 TaxTotal = totals.TaxTotal,
                 TotalExclTax = totals.TotalExclTax,
@@ -169,27 +169,41 @@ namespace Geta.Omnium.Factories
         }
         
         private List<OmniumDiscount> MapDiscounts(
-            IEnumerable<RewardDescription> rewardDescriptions, Currency currency, IMarket market, IOrderAddress address)
+            IEnumerable<RewardDescription> rewardDescriptions)
         {
             return rewardDescriptions != null
-                ? rewardDescriptions.Select(reward => MapDiscount(reward, currency, market, address)).ToList()
+                ? rewardDescriptions.Select(MapDiscount).ToList()
                 : new List<OmniumDiscount>();
         }
 
         private OmniumDiscount MapDiscount(
-            RewardDescription reward, Currency currency, IMarket market, IOrderAddress address)
+            RewardDescription reward)
         {
-            var discountValue = market.PricesIncludeTax ? reward.SavedAmount : reward.SavedAmount; //reward.GetSavedAmountIncludingTax(market.MarketId, currency, address);
-
             return new OmniumDiscount
             {
-                DiscountAmount = discountValue,
+                DiscountAmount = reward.SavedAmount,
                 DiscountCode = reward.AppliedCoupon,
                 DiscountName = reward.Promotion.Name,
-                DiscountValue = discountValue,
+                DiscountValue = GetDiscountValue(reward),
                 RewardType = reward.RewardType.ToString(),
                 DiscountType = reward.Promotion.DiscountType.ToString()
             };
+        }
+
+        private decimal GetDiscountValue(RewardDescription reward)
+        {
+            if (reward.RewardType != RewardType.Percentage)
+            {
+                return reward.SavedAmount;
+            }
+
+            if (_contentLoader.TryGet<PromotionData>(reward.Promotion.ContentGuid, out var promotion)
+                && promotion is IMonetaryDiscount monetaryDiscount)
+            {
+                return monetaryDiscount.Discount.Percentage;
+            }
+
+            return reward.SavedAmount;
         }
 
         public OmniumShipment MapShipment(IShipment shipment, IMarket market, Currency currency)
@@ -206,7 +220,7 @@ namespace Geta.Omnium.Factories
             // var taxCategoryId = _taxUtility.GetDefaultTaxCategoryId();
             // var shippingTaxRate = _taxUtility.GetTaxValue(market.MarketId, shipment.ShippingAddress, TaxType.ShippingTax, taxCategoryId);
 
-            var omniumDiscounts = MapDiscounts(shippingDiscounts, currency, market, shipment.ShippingAddress);
+            var omniumDiscounts = MapDiscounts(shippingDiscounts);
             var shippingMethodName = GetShipmentName(shipment) ?? shipment.ShippingMethodName;
             var lineItems = shipment.LineItems.Select(x => MapOrderLine(x, market, currency, shipment.ShippingAddress))
                                               .ToList();
@@ -271,8 +285,8 @@ namespace Geta.Omnium.Factories
             ILineItem lineItem, IMarket market, Currency currency, IOrderAddress address)
         {
             var marketId = market.MarketId;
-            
-            /*var taxTotal = _taxUtility.GetSalesTax(lineItem, market, currency, address);
+
+            var taxTotal = lineItem.GetSalesTax(market, currency, address);
             var taxRate = _taxUtility.GetTaxValue(marketId, address, TaxType.SalesTax, lineItem.TaxCategoryId);
 
             var placedPrice = new Money(lineItem.PlacedPrice, currency);
@@ -280,17 +294,19 @@ namespace Geta.Omnium.Factories
                 ? _taxUtility.GetPriceWithoutTax(placedPrice, taxRate)
                 : placedPrice;
 
+            var taxOnPlacedPrice = _taxUtility.GetTax(placedPriceExclTax, marketId, address, TaxType.SalesTax, lineItem.TaxCategoryId);
+
             var discountedAmount = new Money(lineItem.GetEntryDiscount(), currency);
             var discountedAmountExclTax = market.PricesIncludeTax
                 ? _taxUtility.GetPriceWithoutTax(discountedAmount, taxRate)
                 : discountedAmount;
 
-            var extendedPrice = _lineItemCalculator.GetExtendedPrice(lineItem, currency);
+            var extendedPrice = lineItem.GetExtendedPrice(currency);
             var extendedPriceExclTax = market.PricesIncludeTax
                 ? _taxUtility.GetPriceWithoutTax(extendedPrice, taxRate)
                 : extendedPrice;
 
-            var discountedPrice = lineItem.GetDiscountTotal(currency);
+            var discountedPrice = _lineItemCalculator.GetDiscountedPrice(lineItem, currency);
             var discountedPriceExclTax = market.PricesIncludeTax
                 ? _taxUtility.GetPriceWithoutTax(discountedPrice, taxRate)
                 : discountedPrice;
@@ -303,7 +319,7 @@ namespace Geta.Omnium.Factories
                 extendedPrice += taxTotal;
             }
 
-            var omniumOrderLine =  new OmniumOrderLine
+            return new OmniumOrderLine
             {
                 Code = lineItem.Code,
                 ProductId = GetProductCode(lineItem.Code),
@@ -317,41 +333,12 @@ namespace Geta.Omnium.Factories
                 DiscountedPriceExclTax = discountedPriceExclTax,
                 Discounted = discountedAmount,
                 DiscountedExclTax = discountedAmountExclTax,
-                TaxTotal = taxTotal,
-                TaxRate = (decimal)taxRate,
-                LineItemId = lineItem.LineItemId.ToString(),
-                Quantity = lineItem.Quantity,
-                Properties = lineItem.ToPropertyList()
-            };*/
-
-            var taxTotal = _lineItemCalculator.GetSalesTax(lineItem, market, currency, address);
-            var taxRate = _taxUtility.GetTaxValue(marketId, address, TaxType.SalesTax, lineItem.TaxCategoryId);
-            
-            var placedPrice = _taxUtility.GetPriceTax(lineItem, market, currency, address, lineItem.PlacedPrice);
-            var discountedAmount = _taxUtility.GetPriceTax(lineItem, market, currency, address, lineItem.GetDiscountTotal(currency)); //all discounts (line item + coupon code)
-            var extendedPrice = _taxUtility.GetPriceTax(lineItem, market, currency, address, _lineItemCalculator.GetExtendedPrice(lineItem, currency));
-            var discountedPrice = _taxUtility.GetPriceTax(lineItem, market, currency, address, _lineItemCalculator.GetDiscountedPrice(lineItem, currency));
-            
-            var omniumOrderLine2 = new OmniumOrderLine
-            {
-                Code = lineItem.Code,
-                ProductId = GetProductCode(lineItem.Code),
-                DisplayName = lineItem.DisplayName,
-                PlacedPrice = placedPrice.PriceInclTax,
-                PlacedPriceExclTax = placedPrice.PriceExclTax,
-                ExtendedPrice = extendedPrice.PriceInclTax,
-                ExtendedPriceExclTax = extendedPrice.PriceExclTax,
-                DiscountedPrice = discountedPrice.PriceInclTax,
-                DiscountedPriceExclTax = discountedPrice.PriceExclTax,
-                Discounted = discountedAmount.PriceInclTax,
-                DiscountedExclTax = discountedAmount.PriceExclTax,
-                TaxTotal = taxTotal,
+                TaxTotal = taxOnPlacedPrice,
                 TaxRate = (decimal)taxRate,
                 LineItemId = lineItem.LineItemId.ToString(),
                 Quantity = lineItem.Quantity,
                 Properties = lineItem.ToPropertyList()
             };
-            return omniumOrderLine2;
         }
         
         public virtual OmniumOrderAddress MapOrderAddress(IOrderAddress orderAddress)
