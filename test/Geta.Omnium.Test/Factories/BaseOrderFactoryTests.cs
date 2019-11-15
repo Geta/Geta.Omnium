@@ -52,6 +52,7 @@ namespace Geta.Omnium.Test.Factories
             var orderFormCalculator = new Mock<IOrderFormCalculator>();
             var orderGroupCalculator = new Mock<IOrderGroupCalculator>();
             var promoteEngine = new Mock<IPromotionEngine>();
+            var contenLoader = new Mock<IContentLoader>();
 
             shippingCalculatorMock.SetReturnsDefault(new Money(0, Currency));
             shippingCalculatorMock.Setup(x => x.GetShippingTotals(It.IsAny<IShipment>(), It.IsAny<IMarket>(), It.IsAny<Currency>()))
@@ -78,10 +79,11 @@ namespace Geta.Omnium.Test.Factories
                 contentRepositoryMock.Object,
                 paymentManagerFacadeMock.Object,
                 lineItemCalculatorMock.Object,
-                orderFormCalculator.Object,
                 orderGroupCalculator.Object,
                 shipmentManagerFacadeMock.Object,
-                promoteEngine.Object);
+                promoteEngine.Object,
+                contenLoader.Object
+                );
         }
 
         private void InitializeDefaultEpiOrderFactorySubject()
