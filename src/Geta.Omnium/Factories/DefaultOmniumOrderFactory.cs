@@ -286,7 +286,7 @@ namespace Geta.Omnium.Factories
         {
             var marketId = market.MarketId;
 
-            var taxTotal = lineItem.GetSalesTax(market, currency, address);
+            var taxTotal = _lineItemCalculator.GetSalesTax(lineItem, market, currency, address);
             var taxRate = _taxUtility.GetTaxValue(marketId, address, TaxType.SalesTax, lineItem.TaxCategoryId);
 
             var placedPrice = new Money(lineItem.PlacedPrice, currency);
@@ -301,7 +301,7 @@ namespace Geta.Omnium.Factories
                 ? _taxUtility.GetPriceWithoutTax(discountedAmount, taxRate)
                 : discountedAmount;
 
-            var extendedPrice = lineItem.GetExtendedPrice(currency);
+            var extendedPrice = _lineItemCalculator.GetExtendedPrice(lineItem, currency);
             var extendedPriceExclTax = market.PricesIncludeTax
                 ? _taxUtility.GetPriceWithoutTax(extendedPrice, taxRate)
                 : extendedPrice;
