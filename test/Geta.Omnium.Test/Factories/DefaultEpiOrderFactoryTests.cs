@@ -107,7 +107,7 @@ namespace Geta.Omnium.Test.Factories
                 payment.PaymentMethodId.Equals(omniumPayment.PaymentMethodId) &&
                 payment.PaymentType == paymentType &&
                 payment.Status.Equals(omniumPayment.Status) &&
-                payment.TransactionID.Equals(omniumPayment.TransactionID) &&
+                payment.TransactionID.Equals(omniumPayment.TransactionId) &&
                 payment.TransactionType == transationType.ToString() &&
                 payment.ValidationCode.Equals(omniumPayment.ValidationCode);
 

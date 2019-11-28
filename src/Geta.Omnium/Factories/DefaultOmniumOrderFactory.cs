@@ -14,11 +14,11 @@ using Geta.Omnium.Models;
 using Geta.Omnium.Taxes;
 using Mediachase.Commerce;
 using Mediachase.Commerce.Catalog;
-using Mediachase.Commerce.Customers;
 using Mediachase.Commerce.Markets;
 using Mediachase.Commerce.Orders;
 using Omnium.EPiServer.Commerce.Mappings;
 using Omnium.Public.Discounts.Models;
+using Omnium.Public.Models;
 using Omnium.Public.Orders.Models;
 using Omnium.Public.Payments.Models;
 using Omnium.Public.Shipments.Models;
@@ -111,7 +111,6 @@ namespace Geta.Omnium.Factories
                 OrderForm = omniumOrderForm,
                 Properties = purchaseOrder.ToPropertyList(),
                 CustomerId = purchaseOrder.CustomerId.ToString(),
-                CustomerComment = "",
                 CustomerReference = "",
                 CustomerEmail = firstShipment?.ShippingAddress?.Email,
                 CustomerPhone = firstShipment?.ShippingAddress?.DaytimePhoneNumber,
@@ -259,7 +258,7 @@ namespace Geta.Omnium.Factories
                 PaymentMethodId = payment.PaymentMethodId,
                 PaymentType = payment.PaymentType.ToString(),
                 Status = payment.Status,
-                TransactionID = payment.TransactionID,
+                TransactionId = payment.TransactionID,
                 ImplementationClass = payment.ImplementationClass,
                 TransactionType = payment.TransactionType,
                 ValidationCode = payment.ValidationCode,

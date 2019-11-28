@@ -157,17 +157,17 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Omnium, Version=4.0.0.19953, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Omnium.4.0.0\lib\net45\Omnium.dll</HintPath>
+    <Reference Include="Omnium, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Omnium.6.0.1\lib\netstandard1.4\Omnium.dll</HintPath>
     </Reference>
     <Reference Include="Omnium.EPiServer.Commerce, Version=12.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Omnium.EPiServer.Commerce.12.2.0\lib\net45\Omnium.EPiServer.Commerce.dll</HintPath>
     </Reference>
-    <Reference Include="Omnium.Public, Version=3.8.0.17500, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Omnium.Public.3.8.0\lib\net45\Omnium.Public.dll</HintPath>
+    <Reference Include="Omnium.Public, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Omnium.Public.5.0.1\lib\netstandard1.4\Omnium.Public.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -292,7 +292,9 @@
     <Content Include="Geta.Omnium.sln.DotSettings.user" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Geta.Omnium.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
