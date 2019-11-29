@@ -57,7 +57,7 @@ namespace Geta.Omnium.Test.Factories
                 payment.TransactionType.Equals(omniumPayment.TransactionType) &&
                 payment.ImplementationClass.Equals(omniumPayment.ImplementationClass) &&
                 payment.AuthorizationCode.Equals(omniumPayment.AuthorizationCode) &&
-                payment.TransactionID.Equals(omniumPayment.TransactionID) &&
+                payment.TransactionID.Equals(omniumPayment.TransactionId) &&
                 payment.ValidationCode.Equals(omniumPayment.ValidationCode);
 
             Assert.True(result);

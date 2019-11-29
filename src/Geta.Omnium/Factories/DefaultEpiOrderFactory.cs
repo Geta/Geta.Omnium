@@ -152,7 +152,7 @@ namespace Geta.Omnium.Factories
             payment.PaymentMethodId = omniumPayment.PaymentMethodId;
             payment.PaymentType = MapPaymentType(payment.PaymentType, omniumPayment.PaymentType);
             payment.Status = omniumPayment.Status;
-            payment.TransactionID = omniumPayment.TransactionID;
+            payment.TransactionID = omniumPayment.TransactionId;
             payment.TransactionType = MapPaymentTransactionType(omniumPayment.TransactionType).ToString();
             payment.ValidationCode = omniumPayment.ValidationCode;
 

@@ -1,7 +1,7 @@
-# Omnium
+# Omnium OMS
 
 ## Description
-Integration package for Omnium.
+Integration package for [Omnium OMS](https://www.omnium.no/?lang=en) and [Episerver Commerce](https://world.episerver.com).
 
 ## Features
 * Scheduled job for syncing orders to Omnium
@@ -9,10 +9,20 @@ Integration package for Omnium.
 
 ## How to get started?
 * ``install-package Geta.Omnium``
-* Implement ``IOmniumImportSettings``
+
+### Configuration
+```
+<appSettings>
+    <add key="omnium:endpointUrl" value="ChangeThis" />
+    <add key="omnium:username" value="ChangeThis" />
+    <add key="omnium:token" value="ChangeThis" />
+</appSettings>
+```
+
+### Implement IOmniumImportSettings
 
 Create class that implements the ``IOmniumImportSettings`` interface.
-``
+```
     public class OmniumImportSettings : IOmniumImportSettings
     {
         private readonly IContentRepository _contentRepository;
@@ -36,19 +46,18 @@ Create class that implements the ``IOmniumImportSettings`` interface.
             throw new NotImplementedException();
         }
     }
-``
+```
 
 Register the implementation.
 
-`` services.AddTransient<IOmniumImportSettings, OmniumImportSettings>(); ``
+``` services.AddTransient<IOmniumImportSettings, OmniumImportSettings>(); ```
 
 Usually the last synced data would be stored on a settings page. By doing this the date can be modified in the CMS.
 
 ## Override default factories
 For synching orders to Omnium the ``IPurchaseOrder`` object is mapped to a ``OmniunOrder``. To override the default functionality create a class and override from the ``DefaultOmniumOrderFactory`` class.
 
-``
-
+```
     public class SiteOmniumOrderFactory : DefaultOmniumOrderFactory
     {
         public SiteOmniumOrderFactory(
@@ -77,16 +86,16 @@ For synching orders to Omnium the ``IPurchaseOrder`` object is mapped to a ``Omn
             return omniumOrder;
         }
     }
-``
+```
 
 And register the implementation.
 
-`` services.AddTransient<IOmniumOrderFactory, SiteOmniumOrderFactory>(); ``
+``` services.AddTransient<IOmniumOrderFactory, SiteOmniumOrderFactory>(); ```
 
 Same can be done for the ``DefaultEpiOrderFactory`` for customizing the default functionality of mapping an OmniumOrder to a IPurchaseOrder.
 	
 ## Package maintainer
-https://github.com/patkleef
+https://github.com/marijorg
 
 ## Changelog
 [Changelog](CHANGELOG.md)

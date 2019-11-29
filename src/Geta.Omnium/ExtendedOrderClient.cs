@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using EPiServer.ServiceLocation;
@@ -12,6 +11,7 @@ using Omnium.Models;
 using Omnium.Orders.Clients;
 using Omnium.Public.Orders.Models;
 using Omnium.Public.Search;
+
 
 namespace Geta.Omnium
 {
