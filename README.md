@@ -1,5 +1,10 @@
 # Omnium
 
+* Master<br>
+![](http://tc.geta.no/app/rest/builds/buildType:(id:GetaPackages_GetaOmnium_00ci),branch:master/statusIcon)
+* Develop<br>
+![](http://tc.geta.no/app/rest/builds/buildType:(id:GetaPackages_GetaOmnium_00ci),branch:develop/statusIcon)
+
 ## Description
 Integration package for Omnium.
 
