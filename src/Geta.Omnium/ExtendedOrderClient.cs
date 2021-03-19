@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Web;
 using EPiServer.ServiceLocation;
 using Omnium.BaseClients;
-using Omnium.Configuration;
 using Omnium.Models;
 using Omnium.Orders.Clients;
 using Omnium.Public.Orders.Models;
@@ -19,10 +18,10 @@ namespace Geta.Omnium
     public class ExtendedOrderClient : OrderClient, IExtendedOrderClient
     {
         private IOmniumClient _client;
-        
-        public ExtendedOrderClient(IOmniumConfiguration config) : base(config)
+
+        public ExtendedOrderClient(IOmniumClient client) : base(client)
         {
-            _client = OmniumClientBase.GetClient(config);
+            _client = client;
         }
 
         public async Task<Response<int>> GetOrdersCountAsync(string[] storeId, string[] status, DateTime changedSince)
@@ -41,7 +40,7 @@ namespace Geta.Omnium
         public async Task<Response<List<OmniumOrder>>> GetOrdersAsync(string[] storeId, string[] status, DateTime changedSince, int pageSize, int page)
         {
             var response = new Response<List<OmniumOrder>>();
-            
+
             var async = await _client.GetAsync("/api/Orders/GetOrders?" + GetQueryString(storeId, status, changedSince, pageSize, page));
             response.HttpStatusCode = async.StatusCode;
             if (async.IsSuccessStatusCode)

@@ -160,14 +160,13 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Omnium, Version=6.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Omnium.6.0.2\lib\netstandard1.4\Omnium.dll</HintPath>
+    <Reference Include="Omnium, Version=7.1.6.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\packages\Omnium.7.1.6\lib\netstandard1.4\Omnium.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Omnium.EPiServer.Commerce, Version=12.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Omnium.EPiServer.Commerce.12.2.0\lib\net45\Omnium.EPiServer.Commerce.dll</HintPath>
-    </Reference>
-    <Reference Include="Omnium.Public, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Omnium.Public.5.0.1\lib\netstandard1.4\Omnium.Public.dll</HintPath>
+    <Reference Include="Omnium.Public, Version=5.6.22.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\packages\Omnium.Public.5.6.22\lib\netstandard1.4\Omnium.Public.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -262,6 +261,7 @@
   <ItemGroup>
     <Compile Include="Culture\CultureResolver.cs" />
     <Compile Include="ExtendedOrderClient.cs" />
+    <Compile Include="Extensions\OmniumExtensions.cs" />
     <Compile Include="Facades\CatalogTaxManagerFacade.cs" />
     <Compile Include="Facades\ICatalogTaxManagerFacade.cs" />
     <Compile Include="Facades\IShipmentManagerFacade.cs" />
@@ -289,13 +289,9 @@
     <Compile Include="Taxes\TaxUtility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Geta.Omnium.sln.DotSettings.user" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Geta.Omnium.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
