@@ -21,11 +21,11 @@ namespace EPiServer.Reference.Commerce.Site.Integrations.Omnium
             IContentRepository contentRepository, 
             IPaymentManagerFacade paymentManagerFacade, 
             ILineItemCalculator lineItemCalculator,
-            IOrderFormCalculator orderFormCalculator,
             IOrderGroupCalculator orderGroupCalculator,
             IShipmentManagerFacade shipmentManagerFacade,
-            IPromotionEngine promotionEngine) 
-            : base(shippingCalculator, marketService, cultureResolver, taxUtility, referenceConverter, contentRepository, paymentManagerFacade, lineItemCalculator, orderFormCalculator, orderGroupCalculator, shipmentManagerFacade, promotionEngine)
+            IPromotionEngine promotionEngine,
+            IContentLoader contentLoader) 
+            : base(shippingCalculator, marketService, cultureResolver, taxUtility, referenceConverter, contentRepository, paymentManagerFacade, lineItemCalculator, orderGroupCalculator, shipmentManagerFacade, promotionEngine, contentLoader)
         {
         }
 
