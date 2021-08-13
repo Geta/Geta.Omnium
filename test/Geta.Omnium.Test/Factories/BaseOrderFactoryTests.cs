@@ -19,7 +19,6 @@ namespace Geta.Omnium.Test.Factories
     public abstract class BaseOrderFactoryTests
     {
         protected DefaultOmniumOrderFactory DefaultOmniumOrderFactorySubject;
-        protected DefaultEpiOrderFactory DefaultEpiOrderFactorySubject;
         protected readonly Currency Currency;
         protected readonly MarketImpl Market;
         protected readonly OmniumFakesBuilder OmniumFakesBuilder;
@@ -33,7 +32,6 @@ namespace Geta.Omnium.Test.Factories
             CultureResolver = new CultureResolver();
 
             InitializeDefaultOmniumOrderFactorySubject();
-            InitializeDefaultEpiOrderFactorySubject();
         }
 
         private void InitializeDefaultOmniumOrderFactorySubject()
@@ -84,14 +82,6 @@ namespace Geta.Omnium.Test.Factories
                 promoteEngine.Object);
         }
 
-        private void InitializeDefaultEpiOrderFactorySubject()
-        {
-            var orderGroupFactory = new Mock<IOrderGroupFactory>();
-
-            var customerContext = new Mock<CustomerContext>();
-            customerContext.Setup(x => x.GetContactById(It.IsAny<Guid>())).Returns(CustomerContact.CreateInstance());
-
-            DefaultEpiOrderFactorySubject = new DefaultEpiOrderFactory(new TestOrderGroupFactory(orderGroupFactory.Object), CultureResolver, customerContext.Object);
-        }
+       
     }
 }

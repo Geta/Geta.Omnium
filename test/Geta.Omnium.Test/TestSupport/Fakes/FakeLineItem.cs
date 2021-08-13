@@ -65,6 +65,8 @@ namespace Geta.Omnium.Test.TestSupport.Fakes
             }
         }
 
+        public IOrderGroup ParentOrderGroup { get; private set; }
+
         public static FakeLineItem CreateLineItem()
         {
             var lineItem = new FakeLineItem

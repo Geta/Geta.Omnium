@@ -2,7 +2,7 @@
 {
     public class OrderConstants
     {
-        public const string MetaFieldOmniumSynchronized = "MetaFieldOmniumSynchronized";
-        public const string MetaFieldOmniumSynchronizedDate = "MetaFieldOmniumSynchronizedDate";
+        public const string MetaFieldOmniumSynchronized = "OmniumSynchronized";
+        public const string MetaFieldOmniumSynchronizedDate = "OmniumSynchronizedDate";
     }
 }

@@ -38,6 +38,8 @@ namespace Geta.Omnium.Test.TestSupport.Fakes
 
         public Hashtable Properties { get; private set; }
 
+        public IOrderGroup ParentOrderGroup { get; private set; }
+
         public static FakeShipment CreateShipment()
         {
             var shipment = new FakeShipment

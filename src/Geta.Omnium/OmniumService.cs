@@ -5,6 +5,8 @@ using EPiServer.ServiceLocation;
 using Geta.Omnium.Extensions;
 using Geta.Omnium.Factories;
 using Omnium.Models;
+using Omnium.Orders.Interfaces;
+using Omnium.Public.Orders.Models;
 
 namespace Geta.Omnium
 {
@@ -12,10 +14,10 @@ namespace Geta.Omnium
     public class OmniumService : IOmniumService
     {
         private readonly ILogger _logger = LogManager.GetLogger(typeof(OmniumService));
-        private readonly IExtendedOrderClient _orderClient;
+        private readonly IOrderClient _orderClient;
         private readonly IOmniumOrderFactory _omniumOrderFactory;
 
-        public OmniumService(IExtendedOrderClient orderClient, IOmniumOrderFactory omniumOrderFactory)
+        public OmniumService(IOrderClient orderClient, IOmniumOrderFactory omniumOrderFactory)
         {
             _orderClient = orderClient;
             _omniumOrderFactory = omniumOrderFactory;
@@ -24,7 +26,12 @@ namespace Geta.Omnium
         public virtual async Task<Response> TransferOrderToOmnium(IPurchaseOrder purchaseOrder)
         {
             var omniumOrder = _omniumOrderFactory.MapOrder(purchaseOrder);
+            var orderResponse = await TransferOrderToOmnium(omniumOrder);
+            return orderResponse;
+        }
 
+        public virtual async Task<Response> TransferOrderToOmnium(OmniumOrder omniumOrder)
+        {
             _logger.Information($"Sending order with id {omniumOrder.OrderNumber} to Omnium");
 
             var orderResponse = await _orderClient.AddOrderAsync(omniumOrder);
