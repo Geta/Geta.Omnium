@@ -12,7 +12,18 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <RepositoryUrl>URL</RepositoryUrl>
+    <Title>Geta.Omnium</Title>
+    <PackageVersion>2.0.0</PackageVersion>
+    <Authors>Geta Digital</Authors>
+    <Company>Geta Digital</Company>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Geta/Geta.Omnium/packages/</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://cdn.geta.no/opensource/icons/Geta-logo-3.png</PackageIconUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Integration package for Omnium and Episerver Commerce.</Description>
+    <PackageReleaseNotes>https://github.com/Geta/Geta.Omnium/blob/master/CHANGELOG.md</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/Geta/Geta.Omnium</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
