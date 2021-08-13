@@ -167,7 +167,7 @@ namespace Geta.Omnium.Factories
                 SubTotal = totals.SubTotal,
                 SubTotalExclTax = totals.SubTotalExclTax,
                 ShippingSubTotal = totals.Shipping,
-                DiscountAmount = totals.OrderDiscounts + totals.ShippingDiscounts,
+                DiscountAmount = totals.OrderDiscounts,
                 Total = totals.Total,
                 TaxTotal = totals.TaxTotal,
                 TotalExclTax = totals.TotalExclTax,
