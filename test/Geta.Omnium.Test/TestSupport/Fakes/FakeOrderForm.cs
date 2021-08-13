@@ -26,6 +26,8 @@ namespace Geta.Omnium.Test.TestSupport.Fakes
         public ICollection<IPayment> Payments { get; }
         public bool PricesIncludeTax { get; }
 
+        public IOrderGroup ParentOrderGroup { get; private set; }
+
         public static FakeOrderForm CreateOrderForm()
         {
             var orderForm = new FakeOrderForm();
